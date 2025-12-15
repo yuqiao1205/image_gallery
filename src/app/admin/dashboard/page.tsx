@@ -2,12 +2,20 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getImages, uploadImage, deleteImage, logout } from '../../../lib/actions';
 
+interface Image {
+  _id: string;
+  url: string;
+  title: string;
+  description?: string;
+  time: Date;
+}
+
 export default async function AdminDashboard() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const admin = cookieStore.get('admin');
   if (!admin) redirect('/admin/login');
 
-  const images = await getImages();
+  const images = await getImages() as Image[];
 
   return (
     <main style={{ padding: '20px' }}>
