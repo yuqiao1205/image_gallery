@@ -64,4 +64,4 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export default dbConnect;
-export { clientPromise };
+export { clientPromise, client };

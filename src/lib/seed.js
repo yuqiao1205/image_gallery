@@ -1,9 +1,10 @@
-import clientPromise from './mongodb.js';
+import 'dotenv/config';
+import clientPromise, { client } from './mongodb.js';
 import { fakeImages, fakeUsers } from './fake-data.js';
 
 async function seedDatabase() {
   try {
-    const client = await clientPromise;
+    await clientPromise;
     const db = client.db('image_gallery');
 
     // Seed images

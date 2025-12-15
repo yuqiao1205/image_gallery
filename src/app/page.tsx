@@ -1,8 +1,18 @@
 import Link from "next/link";
 import { getImages } from "../lib/actions";
 
+export const dynamic = 'force-dynamic';
+
+interface Image {
+  _id: string;
+  url: string;
+  title: string;
+  description?: string;
+  time: Date;
+}
+
 export default async function Home() {
-  const images = await getImages();
+  const images = await getImages() as Image[];
 
   return (
     <main style={{ padding: '20px' }}>

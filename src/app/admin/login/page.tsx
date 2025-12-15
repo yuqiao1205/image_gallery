@@ -1,7 +1,14 @@
 import { login } from "../../../lib/actions";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
-export default function AdminLogin({ searchParams }) {
-  const error = searchParams.error;
+export const dynamic = 'force-dynamic';
+
+interface PageProps {
+  searchParams: any;
+}
+
+export default function AdminLogin({ searchParams }: PageProps) {
+  const error = searchParams?.get?.('error');
 
   return (
     <main style={{ padding: '20px' }}>

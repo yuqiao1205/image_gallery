@@ -1,7 +1,14 @@
 import { getImage } from "../../../lib/actions";
 
-export default async function ImageBlog({ params }) {
-  const image = await getImage(params.id);
+export const dynamic = 'force-dynamic';
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function ImageBlog({ params }: PageProps) {
+  const { id } = await params;
+  const image = await getImage(id);
 
   if (!image) {
     return (

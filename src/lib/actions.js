@@ -4,7 +4,7 @@ import { v2 as cloudinary } from 'cloudinary';
 import { ObjectId } from 'mongodb';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
-import clientPromise from './mongodb.js';
+import clientPromise, { client } from './mongodb.js';
 import { authenticate } from './auth.js';
 
 cloudinary.config({
@@ -25,7 +25,7 @@ export async function uploadImage(formData) {
     }).end(buffer);
   });
 
-  const client = await clientPromise;
+  await clientPromise;
   const db = client.db('image_gallery');
   const collection = db.collection('images');
   await collection.insertOne({
@@ -39,7 +39,7 @@ export async function uploadImage(formData) {
 }
 
 export async function getImages() {
-  const client = await clientPromise;
+  await clientPromise;
   const db = client.db('image_gallery');
   const collection = db.collection('images');
   const images = await collection.find({}).sort({ time: -1 }).toArray();
@@ -47,7 +47,7 @@ export async function getImages() {
 }
 
 export async function updateImage(id, data) {
-  const client = await clientPromise;
+  await clientPromise;
   const db = client.db('image_gallery');
   const collection = db.collection('images');
   await collection.updateOne({ _id: new ObjectId(id) }, { $set: data });
@@ -55,7 +55,7 @@ export async function updateImage(id, data) {
 
 export async function deleteImage(formData) {
   const id = formData.get('id');
-  const client = await clientPromise;
+  await clientPromise;
   const db = client.db('image_gallery');
   const collection = db.collection('images');
   await collection.deleteOne({ _id: new ObjectId(id) });
@@ -63,7 +63,7 @@ export async function deleteImage(formData) {
 }
 
 export async function getImage(id) {
-  const client = await clientPromise;
+  await clientPromise;
   const db = client.db('image_gallery');
   const collection = db.collection('images');
   const image = await collection.findOne({ _id: new ObjectId(id) });

@@ -2,6 +2,8 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getImages, uploadImage, deleteImage, logout } from '../../../lib/actions';
 
+export const dynamic = 'force-dynamic';
+
 interface Image {
   _id: string;
   url: string;
