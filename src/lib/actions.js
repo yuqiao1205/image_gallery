@@ -75,7 +75,8 @@ export async function login(formData) {
   const password = formData.get('password');
 
   if (authenticate(username, password)) {
-    cookies().set('admin', 'true', { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+    const cookieStore = await cookies();
+    cookieStore.set('admin', 'true', { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
     redirect('/admin/dashboard');
   } else {
     // For simplicity, redirect back or handle error
@@ -84,6 +85,7 @@ export async function login(formData) {
 }
 
 export async function logout() {
-  cookies().delete('admin');
+  const cookieStore = await cookies();
+  cookieStore.delete('admin');
   redirect('/admin/login');
 }
