@@ -9,7 +9,7 @@
 }
 
 .hero {
-  padding: 64px 0 34px;
+  padding: 46px 0 22px;
   border-bottom: 1px solid var(--border);
   background:
     url('/hero-bg.svg') center / cover no-repeat,
@@ -38,7 +38,7 @@
 
 .title {
   margin-top: 10px;
-  font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+  font-size: clamp(2.05rem, 3.8vw, 3.2rem);
   line-height: 1.05;
 }
 
@@ -100,10 +100,63 @@
   padding: 16px;
 }
 
+.welcomeHero {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--background) 70%, var(--secondary));
+  margin-bottom: 14px;
+}
+
+.welcomeImage {
+  position: relative;
+  /* Wider ratio = shorter card -> smaller hero height */
+  aspect-ratio: 16 / 7;
+}
+
+.welcomePhoto {
+  object-fit: cover;
+  transform: scale(1.02);
+}
+
+.welcomeOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.0) 62%);
+  color: #fff;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.welcomeTitle {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 1.15rem;
+}
+
+.welcomeSubtitle {
+  margin-top: 6px;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 40ch;
+}
+
 .stat {
   display: grid;
   gap: 4px;
-  padding: 8px 4px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 88%, var(--secondary));
 }
 
 .statValue {
@@ -237,6 +290,10 @@
 }
 
 @media (max-width: 640px) {
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .card {
     grid-column: span 12;
   }

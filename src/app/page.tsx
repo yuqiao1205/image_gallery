@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from 'next/image';
 import { getImages, getImagesCount } from "../lib/actions";
 import styles from "./page.module.css";
 
@@ -40,24 +41,41 @@ export default async function Home() {
             </div>
 
             <div className={styles.statsCard}>
-              <div className={styles.stat}>
-                <div className={styles.statValue}>{imagesCount}</div>
-                <div className={styles.statLabel}>Pieces</div>
-              </div>
-              <div className={styles.statDivider} aria-hidden="true" />
-              <div className={styles.stat}>
-                <div className={styles.statValue}>2025</div>
-                <div className={styles.statLabel}>Now</div>
-              </div>
-              <div className={styles.statDivider} aria-hidden="true" />
-              <div className={styles.stat}>
-                <div className={styles.statValue}>Mixed</div>
-                <div className={styles.statLabel}>Media</div>
+              <div className={styles.welcomeHero}>
+                <div className={styles.welcomeImage}>
+                  <Image
+                    src="/yphi.jpg"
+                    alt="Welcome illustration"
+                    fill
+                    priority
+                    sizes="(max-width: 980px) 100vw, 420px"
+                    className={styles.welcomePhoto}
+                  />
+                  <div className={styles.welcomeOverlay}>
+                    <div className={styles.welcomeTitle}>Welcome</div>
+                    <div className={styles.welcomeSubtitle}>
+                      Step inside the gallery — new uploads land at the top.
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <p className={styles.statsNote}>
-                New uploads appear at the top. Click any piece to view details.
-              </p>
+              <div className={styles.statsGrid}>
+                <div className={styles.stat}>
+                  <div className={styles.statValue}>{imagesCount}</div>
+                  <div className={styles.statLabel}>Pieces</div>
+                </div>
+                <div className={styles.stat}>
+                  <div className={styles.statValue}>2025</div>
+                  <div className={styles.statLabel}>Now</div>
+                </div>
+                <div className={styles.stat}>
+                  <div className={styles.statValue}>Mixed</div>
+                  <div className={styles.statLabel}>Media</div>
+                </div>
+              </div>
+
+              <p className={styles.statsNote}>New uploads appear at the top. Click any piece to view details.</p>
             </div>
           </div>
         </div>
