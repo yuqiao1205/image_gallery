@@ -1,0 +1,214 @@
+.page {
+  min-height: calc(100vh - 72px);
+}
+
+.shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 34px 20px 54px;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 88%, var(--secondary));
+  color: var(--foreground);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.backButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px var(--shadow);
+}
+
+.openOriginal {
+  font-weight: 800;
+  color: color-mix(in srgb, var(--foreground) 86%, transparent);
+}
+
+.openOriginal:hover {
+  color: var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.9fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.imageColumn {
+  display: grid;
+  gap: 14px;
+}
+
+.imageCard {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--background) 70%, var(--secondary));
+  box-shadow: 0 18px 34px var(--shadow-dark);
+}
+
+.imageCard::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(900px 300px at 15% 15%, rgba(59, 130, 246, 0.18), transparent 60%);
+  filter: blur(18px);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.mainImage {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-height: 74vh;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+}
+
+.infoCard {
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 92%, var(--secondary));
+  box-shadow: 0 18px 34px var(--shadow);
+  padding: 18px;
+  position: sticky;
+  top: 92px;
+}
+
+.imageTitle {
+  font-size: 1.75rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.descriptionPanel {
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 92%, var(--secondary));
+  box-shadow: 0 18px 34px var(--shadow);
+  padding: 16px 18px;
+}
+
+.descriptionHeading {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+.descriptionText {
+  margin-top: 10px;
+  color: color-mix(in srgb, var(--foreground) 82%, transparent);
+}
+
+.descriptionMuted {
+  margin-top: 10px;
+  color: color-mix(in srgb, var(--foreground) 62%, transparent);
+  font-style: italic;
+}
+
+.meta {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.metaItem {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 88%, var(--secondary));
+}
+
+.metaItem dt {
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+
+.metaItem dd {
+  font-weight: 750;
+}
+
+.actions {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 750;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 88%, var(--secondary));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.secondaryBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px var(--shadow);
+}
+
+.notFoundPage {
+  min-height: calc(100vh - 72px);
+  padding: 56px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.notFoundCard {
+  max-width: 720px;
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 92%, var(--secondary));
+  box-shadow: 0 18px 34px var(--shadow);
+  padding: 20px;
+}
+
+.notFoundTitle {
+  font-size: 1.8rem;
+}
+
+.notFoundText {
+  margin-top: 10px;
+  color: color-mix(in srgb, var(--foreground) 78%, transparent);
+  margin-bottom: 14px;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .infoCard {
+    position: static;
+  }
+}
